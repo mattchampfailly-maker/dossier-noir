@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dossier noir</title>
+<style>
+:root{--bg:#0b0d10;--p:#14181d;--l:#262d36;--t:#e1e3e7;--m:#8a929d;--a:#e0a458;--r:#c0504a;--paper:#d8cfba;--ink:#2a261f}
+*{box-sizing:border-box}
+body{margin:0;background-color:#0b0d10;color:var(--t);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;
+background:radial-gradient(ellipse 60% 35% at 50% -5%,color-mix(in srgb,var(--a) 22%,transparent),transparent 70%),radial-gradient(ellipse at center,transparent 55%,#000a 100%),var(--bg) fixed}
+main{max-width:980px;margin:0 auto;padding:28px 16px 80px}
+header{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:26px;border-bottom:1px solid var(--l);padding-bottom:16px}
+h1{font:italic 400 clamp(2.4rem,7vw,3.8rem)/1 Georgia,"Times New Roman",serif;margin:0;color:var(--a);text-shadow:0 0 30px color-mix(in srgb,var(--a) 40%,transparent)}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#id{font:13px "Courier New",monospace;color:var(--a);border:1px dashed var(--a);padding:3px 10px;border-radius:3px;transform:rotate(-2deg)}
+h2{font:400 1.25rem Georgia,serif;margin:0}
+.kick{font:italic 1rem Georgia,serif;color:var(--a);margin:0 0 8px}
+.card{background:linear-gradient(180deg,#171c22,var(--p));border:1px solid var(--l);border-left:3px solid var(--a);border-radius:6px;padding:16px 18px;margin-bottom:16px;box-shadow:0 10px 30px #0006}
+.card p{margin:0 0 10px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;align-items:start}
+.side{position:sticky;top:16px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.side{position:static}}
+button{font:inherit;color:var(--t);background:#0d1014;border:1px solid var(--l);border-radius:5px;padding:9px 13px;cursor:pointer;text-align:left;transition:border-color .15s,background .15s}
+button:hover{border-color:var(--a)}
+button:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+button.on{border-color:var(--a);background:color-mix(in srgb,var(--a) 12%,#0d1014)}
+button.done{color:var(--m)}
+button.acc{border-color:var(--r);color:#eeaaa6;margin-top:6px}
+button.acc:hover{background:var(--r);color:#fff}
+.sus{display:grid;gap:8px}
+.sus button{display:flex;gap:12px;align-items:center}
+.sus b{display:block;line-height:1.2}
+small{color:var(--m);display:block}
+.mono{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:italic 1.1rem Georgia,serif;color:#fff;background:linear-gradient(145deg,hsl(var(--h) 30% 34%),hsl(var(--h) 30% 18%));border:1px solid hsl(var(--h) 30% 48%)}
+.mono.big{width:56px;height:56px;font-size:1.4rem}
+.dots{display:flex;gap:4px;margin-top:5px}
+.dots i{width:14px;height:4px;border-radius:2px;background:var(--l)}
+.dots i.f{background:var(--a)}
+.who{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.q{display:grid;gap:8px;margin-bottom:14px}
+.say{font:italic 1.15rem/1.5 Georgia,serif;border-left:2px solid var(--a);padding-left:14px;margin:6px 0 14px;min-height:3.2em}
+.scene b{color:var(--a)}
+.muted,.empty p{color:var(--m)}
+.err{color:#eeaaa6;margin-top:10px!important}
+.end{position:relative;border-left-color:var(--a)}.end.lose{border-left-color:var(--r)}
+.stamp{display:inline-block;font:700 1.3rem Georgia,serif;color:var(--a);border:3px double var(--a);padding:2px 14px;margin-bottom:12px;transform:rotate(-3deg);border-radius:4px}
+.lose .stamp{color:var(--r);border-color:var(--r)}
+.carnet{position:relative;background:var(--paper);color:var(--ink);border-radius:3px;padding:22px 18px 16px;margin-top:8px;font:14px/1.5 "Courier New",ui-monospace,monospace;box-shadow:0 14px 40px #000a;overflow-x:auto;background-image:repeating-linear-gradient(transparent 0 27px,#0000000d 27px 28px)}
+.carnet::before{content:"";position:absolute;top:-8px;left:50%;width:90px;height:20px;margin-left:-45px;background:#e8e0a0cc;transform:rotate(-2deg);box-shadow:0 1px 3px #0004}
+.carnet h2{color:var(--ink);margin-bottom:10px}
+.carnet table{border-collapse:collapse;width:100%;min-width:600px}
+.carnet th,.carnet td{border-bottom:1px dashed #8a806a;padding:6px 8px;text-align:left;vertical-align:top}
+.carnet td.e{color:#9c917a}
+.carnet tr:hover td{background:#0000000a}
+@media (prefers-reduced-motion:no-preference){.card{animation:in .4s ease-out}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.chips button{padding:4px 11px;font-size:.92rem}
+.lbl{margin:0 0 6px!important}button:disabled{opacity:.45;cursor:not-allowed}
+.carnet table{min-width:820px}
+</style>
+</head>
+<body>
+<main>
+<header><h1>Dossier noir</h1><div class="tools"><span id="id"></span><button id="cp" onclick="copy()">Copier le lien</button><button onclick="start()">Nouvelle affaire</button></div></header>
+<div id="app"></div>
+</main>
+<script>
+(function(){
+ function msg(m){var d=document.getElementById("msg");if(!d){d=document.createElement("div");d.id="msg";d.style.cssText="position:fixed;left:8px;right:8px;bottom:8px;background:#3a1614;color:#fff;border:1px solid #c0504a;padding:10px 14px;border-radius:6px;font:14px system-ui;z-index:9";document.body.appendChild(d)}d.textContent=m}
+ function load(list,cb){var s=document.createElement("script");s.src=list[0];s.onload=cb;s.onerror=function(){list.length>1?load(list.slice(1),cb):msg("Fichier introuvable : data.js ou game.js. Mets-les à côté de index.html, ou dans un dossier jeu/.")};document.body.appendChild(s)}
+ window.addEventListener("error",function(e){if(e.message)msg("Erreur : "+e.message)});
+ load(["jeu/data.js","data.js"],function(){load(["jeu/game.js","game.js"],function(){})});
+})();
+</script>
+</body>
+</html>
